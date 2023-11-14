@@ -55,7 +55,7 @@ digraph YouweiZeng {
 38 -> R38
 }
 
-digraph sahil {
+digraph Sahil_Shah {
 1 -> 2
 1 -> R1
 2 -> 3
