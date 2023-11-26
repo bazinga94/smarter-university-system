@@ -62,13 +62,19 @@ class QuizzesTest(unittest.TestCase):
         specific_datetime = datetime(2023, 11, 23, 12, 30, 0)  # Nov 23, 2023, at 12:30:00
         specific_datetime2 = datetime(2023, 12, 23, 12, 30, 0)  # Dec 23, 2023, at 12:30:00
         quiz_id = self.ctrl.add_quiz("q2",'test',specific_datetime,specific_datetime2)
-        q = self.ctrl.get_quiz_by_id(quiz_id)
+        q = self.ctrl.get_quizzes()
         self.assertEqual(len(q), 1, 'testing')
 
         ''' 
         crash info:
+        "/smarter-university-system/app/controllers/quizzes_controller.py", line 19, in __init__
+    self.quizzes:List[Quiz] = self._load_data()
+        "/smarter-university-system/app/controllers/quizzes_controller.py", line 27, in _load_data
+    for qobj in load_data(self.file_name):
+        "/smarter-university-system/app/utils/data_loader.py", line 9, in load_data
+    fpath = os.path.join('data',file_name)
         TypeError: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'
-        
+
         '''     
 
 if __name__ == '__main__':
